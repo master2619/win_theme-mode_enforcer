@@ -1,0 +1,54 @@
+# Windows Theme Monitor - Build Instructions
+
+## Prerequisites
+1. Python 3.11+ installed
+2. All dependencies installed: pip install -r requirements.txt
+3. PyInstaller installed: pip install pyinstaller
+
+## Building the Application
+
+### Single Command Build
+To build the complete application as a single executable:
+
+```bash
+pyinstaller --onefile --noconsole --icon=assets/icon.ico main.py
+```
+
+### Detailed Build Options
+For better control and debugging:
+
+```bash
+pyinstaller --onefile --noconsole --icon=assets/icon.ico --name="WindowsThemeMonitor" --add-data="assets;assets" main.py
+```
+
+### Build Parameters Explanation:
+- `--onefile`: Creates a single executable file
+- `--noconsole`: Runs without showing a console window (GUI only)
+- `--icon=assets/icon.ico`: Sets the application icon
+- `--name="WindowsThemeMonitor"`: Sets the output executable name
+- `--add-data="assets;assets"`: Includes the assets folder
+
+## Post-Build Steps
+1. The executable will be created in the `dist/` folder
+2. Test the executable on a clean Windows system
+3. Ensure all functionality works including:
+   - Theme monitoring
+   - Registry access
+   - System tray integration
+   - Database operations
+
+## Distribution
+The generated .exe file is portable and can be distributed without requiring Python installation on target systems.
+
+## Troubleshooting
+If the build fails:
+1. Update PyInstaller: `pip install --upgrade pyinstaller`
+2. Clear build cache: Delete `build/` and `dist/` folders
+3. Check for missing dependencies in the spec file
+4. For debugging, remove `--noconsole` to see error messages
+
+## Development Testing
+For development and testing, run directly with Python:
+```bash
+python main.py
+```
